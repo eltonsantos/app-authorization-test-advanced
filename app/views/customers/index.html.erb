@@ -3,7 +3,7 @@
 <h1>Listing Customers</h1>
 
 <%= form_tag(customers_path, method: :get) do %>
-  <%= text_field_tag 'search', nil, placeholder: 'Search here...' %>
+  <%= text_field_tag 'searching', nil, placeholder: 'Search here...' %>
   <%= submit_tag "Search" %>
 <% end %>
 

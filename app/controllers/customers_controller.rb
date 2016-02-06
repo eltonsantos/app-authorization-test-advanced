@@ -5,8 +5,8 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    if params[:search]
-      @customers = Customer.search(params[:search])
+    if params[:searching]
+      @customers = Customer.searching(params[:searching])
     else
       @customers = Customer.all
     end
