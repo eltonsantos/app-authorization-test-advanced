@@ -6,8 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @q = Product.ransack(params[:q])
-    @products = @q.result
-    #@products = Product.all
+    @products = @q.result(distinct: true)
   end
 
   # GET /products/1
@@ -72,6 +71,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price, :qtd)
+      params.require(:product).permit(:name, :description, :price, :qtd, :brand, :hd, :ram, :screen, :cpu)
     end
 end
