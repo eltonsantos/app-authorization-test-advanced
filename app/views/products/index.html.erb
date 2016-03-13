@@ -6,17 +6,30 @@
   <br />
   <%= f.search_field :name_cont %>
   <br />
+  
   <%= f.label :brand, "Brand" %>
   <br />
-  <%= f.collection_check_boxes :brand, Product.all, :id, :brand %>
+  <% Product.pluck('distinct brand').each do |brand| %>
+    <%= check_box_tag('q[brand_cont_any][]', brand ) %>
+    <%= brand %>
+  <% end %>
+
   <br />
   <%= f.label :hd, "HD" %>
   <br />
-  <%= f.collection_check_boxes :hd, Product.all, :id, :hd %>
+  <% Product.pluck('distinct hd').each do |hd| %>
+    <%= check_box_tag('q[hd_cont_any][]', hd ) %>
+    <%= hd %>
+  <% end %>
+  
   <br />
   <%= f.label :ram, "RAM" %>
   <br />
-  <%= f.collection_check_boxes :ram, Product.all, :id, :ram %>
+  <% Product.pluck('distinct ram').each do |ram| %>
+    <%= check_box_tag('q[ram_cont_any][]', ram ) %>
+    <%= ram %>
+  <% end %>
+
   <br />
   <%= f.submit "Search" %>
 <% end %>
